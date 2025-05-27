@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    {% if user.is_authenticated %}
+    <!-- Área do usuário -->
+    <div style="float: right; margin: 10px">
+      Usuário: <strong>{{ user.username }}</strong>
+      <form action="{% url 'logout' %}" method="post" style="display: inline">
+        {% csrf_token %}
+        <button type="submit">Sair</button>
+      </form>
+    </div>
+
+    <!-- Mensagens do sistema -->
+    {% if messages %}
+    <div style="margin: 20px 0; color: green">
+      {% for message in messages %} ✅ {{ message }} {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Formulário principal -->
+    <h1>Preferências de Estudo</h1>
+    <form method="post">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td><label>Matéria:</label></td>
+          <td><label>Nível:</label></td>
+          <td><label>Horas/semana:</label></td>
+        </tr>
+        <tr>
+          <td>
+            <select name="materia" required>
+              <option value="">-- Escolha --</option>
+              <option value="portugues">Português</option>
+              <option value="matematica">Matemática</option>
+            </select>
+          </td>
+          <td>
+            <select name="nivel" required>
+              <option value="">-- Escolha --</option>
+              <option value="basico">Básico</option>
+              <option value="intermediario">Intermediário</option>
+              <option value="avancado">Avançado</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" name="horas" min="1" max="40" required />
+          </td>
+        </tr>
+      </table>
+      <button type="submit">Enviar</button>
+    </form>
+    {% endif %}
+  </body>
+</html>

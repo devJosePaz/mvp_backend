@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Entrar</button>
+      {% csrf_token %}
+      <p>Novo aqui? <a href="{% url 'register' %}">Cadastre-se</a></p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Bem-vindo ao MVP!</h1>
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Cadastro</a>
+    {% csrf_token %}
+  </body>
+</html>
