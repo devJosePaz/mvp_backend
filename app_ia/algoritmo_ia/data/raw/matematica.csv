@@ -1,0 +1,25 @@
+﻿Nível,Tópico,SubTópico,Conteúdo,Horas_Estimadas,Dificuldade
+Básico,Álgebra,Equações,"Equações do 1º grau",5,2
+Básico,Álgebra,Sistemas,"Sistemas lineares simples",5,2
+Básico,Geometria,Formas,"Áreas e perímetros",6,3
+Básico,Geometria,Formas,"Ângulos e triângulos",6,3
+Básico,Matemática Aplicada,Porcentagem,"Porcentagem e regra de três",4,2
+Básico,Matemática Aplicada,Razão,"Razão e proporção",4,2
+Básico,Tópicos Avançados,Conjuntos,"Conjuntos numéricos",3,3
+Básico,Tópicos Avançados,Frações,"Operações com frações",3,3
+Intermediário,Álgebra,Funções,"Funções (afim, quadrática)",8,4
+Intermediário,Álgebra,Progressões,"Progressões (PA e PG)",7,4
+Intermediário,Geometria,Analítica,"Geometria analítica (reta, circunferência)",8,4
+Intermediário,Geometria,Teoremas,"Teorema de Pitágoras",5,3
+Intermediário,Matemática Aplicada,Juros,"Juros simples/compostos",6,4
+Intermediário,Matemática Aplicada,Gráficos,"Gráficos e tabelas",5,3
+Intermediário,Tópicos Avançados,Trigonometria,"Trigonometria básica",7,4
+Intermediário,Tópicos Avançados,Probabilidade,"Probabilidade simples",6,3
+Avançado,Álgebra,Logaritmos,"Logaritmos e exponenciais",10,5
+Avançado,Álgebra,Polinômios,"Polinômios e equações complexas",10,5
+Avançado,Geometria,Espacial,"Geometria espacial (prismas, cones)",12,5
+Avançado,Geometria,Trigonometria,"Trigonometria avançada",10,5
+Avançado,Matemática Aplicada,Combinatória,"Análise combinatória",9,5
+Avançado,Matemática Aplicada,Probabilidade,"Probabilidade condicional",8,5
+Avançado,Tópicos Avançados,Cálculo,"Noções de cálculo (limites)",12,5
+Avançado,Tópicos Avançados,Estatística,"Introdução à estatística",10,4

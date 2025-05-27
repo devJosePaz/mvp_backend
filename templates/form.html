@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Gerador de Plano de Estudos</title>
+    <style>
+      .recomendacao {
+        background: #f8f9fa;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+      .topico {
+        margin: 10px 0;
+        padding: 10px;
+        background: white;
+        border-left: 4px solid #007bff;
+      }
+      .prioridade-alta {
+        border-left-color: #dc3545;
+      }
+    </style>
+  </head>
   <body>
-    {% if user.is_authenticated %}
-    <!-- Área do usuário -->
-    <div style="float: right; margin: 10px">
+    <div style="float: right">
       Usuário: <strong>{{ user.username }}</strong>
       <form action="{% url 'logout' %}" method="post" style="display: inline">
         {% csrf_token %}
@@ -11,31 +29,30 @@
       </form>
     </div>
 
-    <!-- Mensagens do sistema -->
+    <h1>Preferências de Estudo</h1>
+
     {% if messages %}
-    <div style="margin: 20px 0; color: green">
+    <div style="color: green; margin: 10px 0">
       {% for message in messages %} ✅ {{ message }} {% endfor %}
     </div>
     {% endif %}
 
-    <!-- Formulário principal -->
-    <h1>Preferências de Estudo</h1>
+    <!-- Formulário -->
     <form method="post">
       {% csrf_token %}
       <table>
         <tr>
           <td><label>Matéria:</label></td>
-          <td><label>Nível:</label></td>
-          <td><label>Horas/semana:</label></td>
-        </tr>
-        <tr>
           <td>
             <select name="materia" required>
               <option value="">-- Escolha --</option>
-              <option value="portugues">Português</option>
               <option value="matematica">Matemática</option>
+              <option value="portugues">Português</option>
             </select>
           </td>
+        </tr>
+        <tr>
+          <td><label>Nível:</label></td>
           <td>
             <select name="nivel" required>
               <option value="">-- Escolha --</option>
@@ -44,13 +61,40 @@
               <option value="avancado">Avançado</option>
             </select>
           </td>
+        </tr>
+        <tr>
+          <td><label>Horas/semana:</label></td>
           <td>
-            <input type="number" name="horas" min="1" max="40" required />
+            <input type="number" name="horas" min="1" step="0.5" required />
           </td>
         </tr>
       </table>
-      <button type="submit">Enviar</button>
+      <button type="submit">Gerar Plano</button>
     </form>
+
+    <!-- Exibição das recomendações -->
+    {% if recomendacao %}
+    <div class="recomendacao">
+      <h2>Seu Plano de Estudo</h2>
+      <p>
+        Total de horas semanais: {{ recomendacao.metadata.total_weekly_hours }}
+      </p>
+
+      {% for item in recomendacao.recommendations %}
+      <div
+        class="topico {% if item.priority == 'Alta' %}prioridade-alta{% endif %}"
+      >
+        <h3>{{ item.title }}</h3>
+        <p><strong>Prioridade:</strong> {{ item.priority }}</p>
+        <p>
+          <strong>Tempo estimado:</strong> {{ item.weekly_hours }} horas/semana
+        </p>
+        <p>{{ item.description }}</p>
+      </div>
+      {% endfor %}
+
+      <small>Gerado em: {{ recomendacao.metadata.generated_at }}</small>
+    </div>
     {% endif %}
   </body>
 </html>
